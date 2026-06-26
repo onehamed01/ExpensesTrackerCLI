@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Transaction{
     private double amount;
 
@@ -23,14 +25,30 @@ class Tracking{
         System.out.println("Current Expenses: £"+ this.expenses);
 
     }
+    // when the parameter of Transaction is plus, the spliteIcome just separate amount to the expenses and saving 
+    private void spliteIncome(double saveAmount){
+        double objAmount = tObj.getterAmount();
 
+        this.save += saveAmount;
+        this.expenses += objAmount - saveAmount;
+        showing();
+        
+    }
+    // check is it negative or positive amount and call each method dependes to the process 
     void process(){
         double currentAmount = tObj.getterAmount();
 
         if (currentAmount > 0){
+            Scanner saveInput = new Scanner(System.in);
+
+            System.out.println("How much you want save: ");
+            double saveAmount = saveInput.nextDouble();
+
+            spliteIncome(saveAmount);
         }
         else if (tObj.getterAmount() < 0) {
             currentAmount += this.expenses; 
+
             showing();
         } 
         else {
