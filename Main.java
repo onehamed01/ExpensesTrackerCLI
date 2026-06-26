@@ -58,3 +58,10 @@ class Tracking{
     }
 
 }
+class Main{
+    public static void main(String[] args) {
+        Transaction thisWeekIncome = new Transaction(350.00);
+        Tracking thisWeekIncomeTracking = new Tracking(thisWeekIncome);
+        thisWeekIncomeTracking.process();
+    }
+}
