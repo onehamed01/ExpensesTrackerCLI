@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 // The logic is one-to-many. Transaction's objects can implement by one Tracker to process the logic 
 
 class Transaction{
@@ -40,11 +41,12 @@ class Tracker{
         }
         // Else the amount be expenses (negative amount)
         else{
+            double positiveAmount = Math.abs(amount);
             // check if the amount of expenses is bigger than the last amount of expenses 
-            if (this.expenses < amount) {
+            if (this.expenses < positiveAmount) {
                 System.out.println("You don't have enought amount to pay!");
             }
-            else if (this.expenses - amount == 0) {
+            else if (this.expenses - positiveAmount == 0) {
                 this.expenses = 0;
                 System.out.println("you current expenses amount is 0. Please charge it!");
             }
@@ -60,11 +62,7 @@ class Main{
      Tracker tracker = new Tracker();
      
      // Income instance
-     Transaction thisWeekIncome = new Transaction(280.00);
-     Transaction thisWeekTip = new Transaction(35.00);
      Transaction liddleShopping = new Transaction(-80.00);
-     tracker.processor(thisWeekIncome);
-     tracker.processor(thisWeekTip);
      tracker.processor(liddleShopping);
      tracker.summery();
     }
